@@ -1,0 +1,34 @@
+body {
+	background-image: url("images/starfield.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+}
+section div {
+	text-align: center;
+	color: #00bcff;
+}
+#self {
+	background-image: url("images/self.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+#relation {
+	background-image: url("images/relation.jpeg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+#career {
+	background-image: url("images/career.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+#edu {
+	background-image: url("images/edu.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: initial;
+}

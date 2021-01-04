@@ -1,34 +1,101 @@
+nav {
+	background-color: #ade9ff;
+}
+header {
+	display: flex;
+	align-items: center;
+}
+footer {
+	background-color: #fff833;
+}
 body {
-	background-image: url("images/starfield.jpg");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: 100% 100%;
+	background-color: #fff3c2;
+	display: flex;
+	width: 100%;
 }
-section div {
+article img {
+	width: 150px;
+	height: 225px;
+}
+.jumbotron {
+	background-color: #fff833;
+	padding: 10px;
+	margin: 0px;
+}
+.disclaimer {
+	font-size: 12px;
+}
+.discommend {
+	background-color: #fff833;
+}
+#logo {
+	width: 75px;
+	height: 75px;
+}
+#sidebar {
+	width: 250px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	z-index: 999;
+	background-color: #edcc5f; 
+	color: #fff;
+	transition: all 0.3s;
+	overflow: auto;
+}
+#sidebar.active {
+    margin-left: -250px;
+}
+#sidebar .sidebar-header {
+	padding: 20px;
+	background: #ebc33f;
+}
+#sidebar .sidebar-content {
+	padding: 10px;
 	text-align: center;
-	color: #00bcff;
 }
-#self {
-	background-image: url("images/self.jpg");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
+#content-wrapper {
+	width: calc(100% - 250px);
+	padding: 5px;
+	min-height: 100vh;
+	transition: all 0.3s;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
-#relation {
-	background-image: url("images/relation.jpeg");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
+#content-wrapper.active {
+	width: 100%;
 }
-#career {
-	background-image: url("images/career.jpg");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
+#sidebarCollapse {
+	position: fixed;
+	background-color: #daa520;
+	border-color: #a67700;
 }
-#edu {
-	background-image: url("images/edu.jpg");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: initial;
+#sidebarCollapse img {
+	width: 30px;
+	height: 35px;
+}
+#search {
+	background-color: #faeaaa;
+	padding: 5px 10px;
+}
+#result {
+	padding: 5px;
+	min-height: 249px;
+}
+#result div {
+	padding: 10px;
+	display: flex;
+}
+#result table {
+	align-self: center;
+	margin: 5px;
+	width: 100%;
+}
+#result td {
+	width: 50%;
+}
+#result td[rowspan="3"] {
+	text-align: right;
 }

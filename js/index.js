@@ -6,6 +6,7 @@ $(document).ready(function () {
 		$('#content-wrapper').toggleClass('active');
 		
 		if (!$('#sidebar').hasClass('active')) {
+			$('#demo').append("Sidebar Active Check, ");
 			$('.sidebar-content').html("");
 			
 			if (inc > 0) {
@@ -45,6 +46,7 @@ $(document).ready(function () {
 	$('#search').keyup(function () {
 		var ulink = "http://omdbapi.com/?apikey=2d27a174&type=movie&r=xml&" + $("form").serialize();
 		
+		$('#demo').append("Keystroke Check, ");
 		$.ajax({
 			url: ulink,
 			dataType: "xml",

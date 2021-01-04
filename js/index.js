@@ -51,7 +51,7 @@ $(document).ready(function () {
 			success: function(xml) {
 				var root = $(xml).find('root');
 				var rsp = root.attr('response');
-				var holder, comp, txt = "";
+				var holder, txt = "";
 				
 				if (rsp == "False") {
 					$('#ttl-rslts').html("0 Results");
@@ -61,11 +61,17 @@ $(document).ready(function () {
 					$('#ttl-rslts').html(root.attr('totalResults') + " Results");
 					holder = $(xml).find('result');
 					for (var i = 0; i < holder.length; i++) {
-						var j;
+						var comp = holder.eq(i).attr('imdbID');
+						var cth = holder.eq(i).attr('poster');
+						var j, comp;
 						
-						comp = holder.eq(i).attr('imdbID');
-						txt += "<article><hr><div><img src="+holder.eq(i).attr('poster')+" /><table><tr><td><b>Title: </b>"+holder.eq(i).attr('title')+
-						  "</td><td rowspan=\"3\">";
+						if (cth == undefined) {
+							txt += "<article><hr><div><img src=\"css/images/blank.png\" />";
+						}
+						else {
+							txt += "<article><hr><div><img src="+holder.eq(i).attr('poster')+" />";
+						}
+						txt += "<table><tr><td><b>Title: </b>"+holder.eq(i).attr('title')+"</td><td rowspan=\"3\">";
 						for (j = 0; j < inc; j++) {
 							if (comp == nomList[j]) {
 								txt += "<button class=\"btn btn-outline-warning nominate\" name="+comp+">Nominate</button>";

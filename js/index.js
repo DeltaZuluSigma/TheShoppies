@@ -55,12 +55,12 @@ $(document).ready(function () {
 				var rsp = root.attr('response');
 				var holder, comp, txt = "";
 				
-				$('#demo').append("("+rsp+")"+root.attr('totalResults'));
-				if (rsp == false) {
+				$('#demo').append("Search Ajax Check, ");
+				if (rsp == "False") {
 					$('#ttl-rslts').html("0 Results");
 					$('#result').html($(xml).find('error').html());
 				}
-				else if (rsp == true) {
+				else if (rsp == "True") {
 					$('#ttl-rslts').html(root.attr('totalResults') + " Results");
 					holder = $(xml).find('result');
 					for (var i = 0; i < holder.length; i++) {

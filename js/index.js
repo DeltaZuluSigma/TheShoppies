@@ -11,7 +11,7 @@ $(document).ready(function () {
 			if (inc > 0) {
 				for (var i = 0; i < inc; i++) {
 					$.ajax({
-						url: "http://omdbapi.com/?apikey=2d27a174&type=movie&r=xml&i=" + nomList[i],
+						url: "https://omdbapi.com/?apikey=2d27a174&type=movie&r=xml&i=" + nomList[i],
 						dataType: "xml",
 						success: function(xml) {
 							var rsp = $(xml).find('movie');
@@ -43,7 +43,7 @@ $(document).ready(function () {
 	});
 	
 	$('#search').keyup(function () {
-		var ulink = "http://omdbapi.com/?apikey=2d27a174&type=movie&r=xml&" + $("form").serialize();
+		var ulink = "https://omdbapi.com/?apikey=2d27a174&type=movie&r=xml&" + $("form").serialize();
 		
 		$.ajax({
 			url: ulink,

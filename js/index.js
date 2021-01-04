@@ -55,7 +55,8 @@ $(document).ready(function () {
 				var rsp = root.attr('response');
 				var holder, comp, txt = "";
 				
-				$('#demo').append("("+rsp+")"+root.attr('totalResults'));
+				$('#demo').append($(root).attr('response')+", ");
+				
 				if (rsp == false) {
 					$('#ttl-rslts').html("0 Results");
 					$('#result').html($(xml).find('error').html());

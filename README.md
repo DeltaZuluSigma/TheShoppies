@@ -8,7 +8,5 @@ A web application that helps manage movie nominations for the upcoming Shoppies 
 * Banner notifiation upon selecting 5 nominees, and
 * Infinite scroll
 
-### Next Update:
-* Fix double firing infinite scroll,
-* Fix adding movie double fire,
-* Debug and fix site issues
+### Next Steps:
+* Fix double firing infinite scroll

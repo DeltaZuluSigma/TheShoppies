@@ -28,6 +28,12 @@ article img {
 .discommend {
 	background-color: #fff833;
 }
+.alert {
+	background-color: #e8b431;
+	position: fixed;
+	width: 100%;
+	padding: 30px;
+}
 #logo {
 	width: 75px;
 	height: 75px;
@@ -48,8 +54,9 @@ article img {
     margin-left: -250px;
 }
 #sidebar .sidebar-header {
-	padding: 20px;
-	background: #ebc33f;
+	padding: 10px;
+	background-color: #ebc33f;
+	text-align: center;
 }
 #sidebar .sidebar-content {
 	padding: 10px;
@@ -84,7 +91,7 @@ article img {
 	padding: 5px;
 	min-height: 249px;
 }
-#result div {
+#srch-rslt-1 div, #srch-rslt-2 div, #srch-rslt-3 div {
 	padding: 10px;
 	display: flex;
 }

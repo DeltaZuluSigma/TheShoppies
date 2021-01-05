@@ -18,17 +18,13 @@
 	    <h3>Nomination List</h3>
 	  </div>
 	  <div class="sidebar-content">
-	    <!--<hr>
-		<article>
-		  <img />
-		  <br>Title<br>IMDb ID<br>Release
-		</article>-->
 	  </div>
 	</nav>
 	
 	<div id="content-wrapper" class="active">
 	  <!--Header-->
 	  <header class="jumbotron text-left">
+	    <div class="alert alert-warning" role="alert">You have selected 5 nominations, remove a nomination or submit your nominations to continue.</div>
 	    <img id="logo" src="css/images/clapper.png" alt="gold clapper">
 	    <h1>The Shoppies</h1>
 	  </header>
@@ -44,10 +40,14 @@
 		  <input type="number" name="y" id="year" class="form-control" min="1" max="2020" />
 		</form>
 		<p id="ttl-rslts" class="disclaimer">0 Results</p>
-		<p id="demo"></p>
+		<!--<p id="demo"></p>-->
 	  </article>
 	  <!--Results-->
-	  <section class="container" id="result"></section>
+	  <section class="container" id="result">
+	    <div id="srch-rslt-1"></div>
+		<div id="srch-rslt-2"></div>
+		<div id="srch-rslt-3"></div>
+	  </section>
 	  <!--Footer-->
 	  <footer class="page-footer font-small">
 	    <div class="footer-copyright text-left p-2">Made by DeltaZuluSigma (Darius Z)</div>

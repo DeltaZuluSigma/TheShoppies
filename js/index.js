@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	var inc = 0, nomList = [];					// Nomination List Trackers
+	const nomList = [];							// Nomination List Tracker
 	var topScroll = false, bttmScroll = false;	// Scroll Lock Variables
 	
 	$('.alert').hide();							// Hide banner max nomination count
@@ -38,7 +38,7 @@ $(document).ready(function () {
 						txt += "<table><tr><td><b>Title: </b>"+rslts.eq(i).attr('title')+"</td><td rowspan=\"3\">";
 						
 						// Nomination List Check Loop & Condition
-						for (j = 0; j < inc; j++) {
+						for (j = 0; j < nomList.length; j++) {
 							if (comp == nomList[j]) {
 								txt += "<button class=\"btn btn-outline-warning nominate\" disabled=\"disabled\" name="+comp+">Nominate</button>";
 								break;
@@ -62,19 +62,28 @@ $(document).ready(function () {
 					
 					// Establish Module Button Functionality
 					$('.nominate').on('click', function () {
+						var single = true;
+						
+						// Duplicate Insertion Checking Loop
+						for (var i = 0; i < nomList.length; i++) {
+							if (nomList[i] == $(this).attr('name')) {
+								single = false;
+							}
+						}
+						
 						// Filled Nomination List Detection
-						if (inc < 5) {
+						if (single && (nomList.length < 5)) {
 							// Add Nominee
-							nomList[inc++] = $(this).attr('name');
+							nomList.push($(this).attr('name'));
 							
 							// Max Nominees Banner Check
-							if (inc == 5) {
+							if (nomList.length >= 5) {
 								$('.alert').fadeTo(3000, 500).slideUp(1000);
 							}
 							$(this).attr('disabled', true);
 							$(this).toggleClass('btn-warning btn-outline-warning');
 						}
-						else {
+						else if (nomList.length >= 5) {
 							// Max Nominees Banner
 							$('.alert').fadeTo(3000, 500).slideUp(1000);
 						}
@@ -100,9 +109,9 @@ $(document).ready(function () {
 			$('.sidebar-content').html("");					//Clear Previous Nomination List
 			
 			// Detect Chosen Nominees
-			if (inc > 0) {
+			if (nomList.length > 0) {
 				// Nominees Listing Loop
-				for (var i = 0; i < inc; i++) {
+				for (var i = 0; i < nomList.length; i++) {
 					// Nominee AJAX Request
 					$.ajax({
 						url: "https://omdbapi.com/?apikey=2d27a174&type=movie&r=xml&i=" + nomList[i],
@@ -116,15 +125,20 @@ $(document).ready(function () {
 							
 							// Add Nominee Module
 							$('.sidebar-content').append(txt);
+							
 							// Establish Module Button Functionality
 							$('.discommend').on('click', function () {
+								var temp = "", end = nomList.length;
+								
 								// Remove Visual Nominee
 								$(this).parent().remove();
 								// Remove Memory Nominee Loop
-								for (var j = 0; j < nomList.length; j++) {
-									if (nomList[j] == comp) {
-										nomList.splice(j, 1);
-										inc--;
+								for (var j = 0; j < end; j++) {
+									if (nomList[j] == $(this).attr('name')) {
+										temp = nomList[j];
+										nomList[j] = nomList[end - 1];
+										nomList[end - 1] = temp;
+										nomList.pop();
 										break;
 									}
 								}

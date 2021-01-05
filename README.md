@@ -1,9 +1,14 @@
 # TheShoppies
 
-A web application that helps manage movie nominations for the upcoming Shoppies which such features as:
+A web application that helps manage movie nominations for the upcoming Shoppies which include features such as:
 
-* Dynamically search the OMDB API and display the results
-* Add a movie from the search results to our nomination list
-* View the list of films already nominated
-* Remove a nominee from the nomination list
-* Prompt the user of a complete nomination list (5 movies)
+* Dynamic search through the OMDB API to generate search results,
+* Being able to add to and remove from your nomination list,
+* View your nominees in your nomination list,
+* Banner notifiation upon selecting 5 nominees, and
+* Infinite scroll
+
+### Next Update:
+* Fix double firing infinite scroll,
+* Fix adding movie double fire,
+* Debug and fix site issues

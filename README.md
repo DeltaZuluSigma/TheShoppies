@@ -9,4 +9,5 @@ A web application that helps manage movie nominations for the upcoming Shoppies 
 * Infinite scroll
 
 ### Next Steps:
-* Fix double firing infinite scroll
+* Fix double firing infinite scroll,
+* Implement nomination list submission button

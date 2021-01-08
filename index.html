@@ -15,39 +15,43 @@
 	<!--Sidebar & Nomination List-->
 	<nav id="sidebar" class="active">
 	  <div class="sidebar-header">
+	    <button type="button" id="sidebarCollapseRsp" class="btn btn-success">
+          <img src="css/images/list.png" alt="list">
+        </button>
 	    <h3>Nomination List</h3>
+		<button type="button" id="submit" class="btn btn-sm btn-warning">Submit</button>
 	  </div>
 	  <div class="sidebar-content">
-	    <!--<hr>
-		<article>
-		  <img />
-		  <br>Title<br>IMDb ID<br>Release
-		</article>-->
 	  </div>
 	</nav>
 	
 	<div id="content-wrapper" class="active">
 	  <!--Header-->
 	  <header class="jumbotron text-left">
+	    <div class="alert alert-warning" role="alert">You have selected 5 nominations, remove a nomination or submit your nominations to continue.</div>
 	    <img id="logo" src="css/images/clapper.png" alt="gold clapper">
 	    <h1>The Shoppies</h1>
 	  </header>
-      <button type="button" id="sidebarCollapse" class="btn btn-warning">
+      <button type="button" id="sidebarCollapse" class="btn btn-success">
         <img src="css/images/list.png" alt="list">
       </button>
 	  <!--Search-->
 	  <article class="container" id="search">
 		<form>
-		  <label for="msearch" class="form-label">Movie Title / IMDb ID <span class="disclaimer">(i.e. The Avengers / tt0848228)</span></label>
+		  <label for="msearch" class="form-label">Movie Title <span class="disclaimer">(i.e. The Avengers)</span></label>
 		  <input type="text" name="s" id="msearch" class="form-control" />
 		  <label for="year" class="form-label">Year <span class="disclaimer">(i.e. 2020)</span></label>
 		  <input type="number" name="y" id="year" class="form-control" min="1" max="2020" />
 		</form>
 		<p id="ttl-rslts" class="disclaimer">0 Results</p>
-		<p id="demo"></p>
+		<!--<p id="demo"></p>-->
 	  </article>
 	  <!--Results-->
-	  <section class="container" id="result"></section>
+	  <section class="container" id="result">
+	    <div id="srch-rslt-1"></div>
+		<div id="srch-rslt-2"></div>
+		<div id="srch-rslt-3"></div>
+	  </section>
 	  <!--Footer-->
 	  <footer class="page-footer font-small">
 	    <div class="footer-copyright text-left p-2">Made by DeltaZuluSigma (Darius Z)</div>

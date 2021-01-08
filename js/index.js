@@ -1,8 +1,11 @@
 $(document).ready(function () {
-	const nomList = [];							// Nomination List Tracker
-	var topScroll = false, bttmScroll = false;	// Scroll Lock Variables
+	// Nomination List Tracker
+	const nomList = [];
+	// Scroll Lock Variables
+	var topScroll = false, bttmScroll = false, triggered = false;
 	
-	$('.alert').hide();							// Hide banner max nomination count
+	// Hide banner max nomination count
+	$('.alert').hide();
 	
 	/***Functions***/
 	
@@ -27,12 +30,19 @@ $(document).ready(function () {
 						var cth = rslts.eq(i).attr('poster');					// Poster Catching Variable
 						var j;													// Nomination List Check Loop Variable
 						
-						// Poster Catch
-						if (cth == undefined) {
-							txt += "<article><hr><div><img src=\"css/images/blank.png\" />";
+						if ((i % 2) == 1) {
+							txt += "<article><div class=\"odd\">"
 						}
 						else {
-							txt += "<article><hr><div><img src="+rslts.eq(i).attr('poster')+" />";
+							txt += "<article><div>"
+						}
+						
+						// Poster Catch
+						if (cth == undefined) {
+							txt += "<img src=\"css/images/blank.png\" />";
+						}
+						else {
+							txt += "<img src="+rslts.eq(i).attr('poster')+" />";
 						}
 						
 						txt += "<table><tr><td><b>Title: </b>"+rslts.eq(i).attr('title')+"</td><td rowspan=\"3\">";
@@ -40,7 +50,7 @@ $(document).ready(function () {
 						// Nomination List Check Loop & Condition
 						for (j = 0; j < nomList.length; j++) {
 							if (comp == nomList[j]) {
-								txt += "<button class=\"btn btn-outline-warning nominate\" disabled=\"disabled\" name="+comp+">Nominate</button>";
+								txt += "<button class=\"btn btn-warning nominate\" disabled=\"disabled\" name="+comp+">Nominate</button>";
 								break;
 							}
 						}
@@ -78,13 +88,14 @@ $(document).ready(function () {
 							
 							// Max Nominees Banner Check
 							if (nomList.length >= 5) {
+								$('.alert').html("You have selected 5 nominations, remove a nomination or submit your nominations to continue.");
 								$('.alert').fadeTo(3000, 500).slideUp(1000);
 							}
 							$(this).attr('disabled', true);
-							$(this).toggleClass('btn-warning btn-outline-warning');
 						}
 						else if (nomList.length >= 5) {
 							// Max Nominees Banner
+							$('.alert').html("You have selected 5 nominations, remove a nomination or submit your nominations to continue.");
 							$('.alert').fadeTo(3000, 500).slideUp(1000);
 						}
 					});
@@ -103,6 +114,7 @@ $(document).ready(function () {
 		// Collapse Class Toggle
 		$('#sidebar').toggleClass('active');
 		$('#content-wrapper').toggleClass('active');
+		$('.alert').toggleClass('active');
 		
 		// Detect Sidebar Active Display
 		if (!$('#sidebar').hasClass('active')) {
@@ -151,6 +163,31 @@ $(document).ready(function () {
 			else {
 				$('.sidebar-content').html("No Nominees Yet");
 			}
+		}
+	});
+	
+	/* sidebarCollapseRsp Event Listener & Function
+	   - Mobile View exit nomination list toggle
+	*/
+	$('#sidebarCollapseRsp').on('click', function () {
+		// Collapse Class Toggle
+		$('#sidebar').toggleClass('active');
+		$('#content-wrapper').toggleClass('active');
+	});
+	
+	/* submit Event Listener & Function
+	   - Facade nomination list submission
+	*/
+	$('#submit').on('click', function () {
+		if (nomList.length > 0) {
+			$('.sidebar-content').html("No Nominees Yet");
+			$('.alert').html("You submitted "+nomList.length+" nominees! You may continue browsing movies or make another list.");
+			$('.alert').fadeTo(3000, 500).slideUp(1000);
+			nomList = [];
+		}
+		else {
+			$('.alert').html("You haven't nominated anyone yet.");
+			$('.alert').fadeTo(3000, 500).slideUp(1000);
 		}
 	});
 	
@@ -205,13 +242,15 @@ $(document).ready(function () {
 		/*console.log($(window).scrollTop()+", "+topCheck);*/
 		
 		// Top Check
-		if (topScroll && ($(window).scrollTop() <= topCheck)) {
+		if (topScroll && ($(window).scrollTop() <= topCheck) && !triggered) {
+			triggered = true;
 			$(window).scrollTop(jump);
 			$('#srch-rslt-3').html($('#srch-rslt-2').html());
 			$('#srch-rslt-3').attr('name', $('#srch-rslt-2').attr('name'));
 			$('#srch-rslt-2').html($('#srch-rslt-1').html());
 			$('#srch-rslt-2').attr('name', $('#srch-rslt-1').attr('name'));
 			searchResults(ulink, 1, Number($('#srch-rslt-1').attr('name')) - 1);
+			setTimeout(function () { triggered = false; }, 500);
 		}
 		// Bottom Check
 		else if (bttmScroll && ($(window).scrollTop() >= bttmCheck)) {

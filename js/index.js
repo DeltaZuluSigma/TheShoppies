@@ -125,6 +125,7 @@ $(document).ready(function () {
 		$('#sidebar').toggleClass('active');
 		$('#content-wrapper').toggleClass('active');
 		$('.alert').toggleClass('active');
+		$('#demo').html(nomList);
 		
 		// Detect Sidebar Active Display
 		if (!$('#sidebar').hasClass('active')) {
@@ -193,7 +194,7 @@ $(document).ready(function () {
 			$('.sidebar-content').html("No Nominees Yet");
 			$('.alert').html("You submitted "+nomList.length+" nominees! You may continue browsing movies or make another list.");
 			$('.alert').fadeTo(3000, 500).slideUp(1000);
-			nomList = [];
+			nomList.splice(0, nomList.length);
 		}
 		else {
 			$('.alert').html("You haven't nominated anyone yet.");

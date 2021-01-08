@@ -59,7 +59,17 @@ $(document).ready(function () {
 						}
 						
 						txt += "</td></tr><tr><td><b>IMDb ID: </b>"+comp+"</td></tr><tr><td><b>Year: </b>"+rslts.eq(i).attr('year')+
-						  "</td></tr></table></div></article>";
+						  "</td></tr>";
+						
+						if (comp == nomList[j]) {
+							txt += "<tr class=\"response\"><td><button class=\"btn btn-warning nominate\" disabled=\"disabled\" name="+comp+
+							  ">Nominate</button></td></tr>";
+						}
+						else {
+							txt += "<tr class=\"response\"><td><button class=\"btn btn-warning nominate\" name="+comp+">Nominate</button></td></tr>";
+						}
+						
+						txt += "</table></div></article>";
 					}
 					
 					// Display Search Results
